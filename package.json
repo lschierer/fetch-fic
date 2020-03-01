@@ -7,6 +7,9 @@
     "fetch-fic": "ff.js",
     "ff": "ff.js"
   },
+  "contributors": [
+    "Dylan Armstrong <dylan@dylan.is> (https://dylan.is/)"
+  ],
   "keywords": [
     "fanfic",
     "epub",
@@ -90,6 +93,7 @@
     "site/ao3/series.js",
     "site/deviantart.js",
     "site/fanfictionnet.js",
+    "site/fictionpress.js",
     "site/generic-html.js",
     "site/generic-image.js",
     "site/gravatar.js",
