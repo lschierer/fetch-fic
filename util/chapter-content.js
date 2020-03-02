@@ -1,5 +1,6 @@
 'use strict'
 const cheerio = require('cheerio')
+// htmlparser2 is much more forgiving than parse5 (used in cheerio)
 const htmlparser2 = require('htmlparser2');
 
 const Chapter = use('fic').Chapter
