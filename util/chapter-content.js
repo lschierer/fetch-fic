@@ -1,7 +1,17 @@
 'use strict'
 const cheerio = require('cheerio')
+// htmlparser2 is much more forgiving than parse5 (used in cheerio)
+const htmlparser2 = require('htmlparser2');
 
 const Chapter = use('fic').Chapter
+
+// htmlparser2 options taken from cheerio defaults
+const options = {
+  withDomLvl1: true,
+  normalizeWhitespace: false,
+  xmlMode: true,
+  decodeEntities: true
+};
 
 class ChapterContent extends Chapter {
   constructor (from, opts) {
@@ -48,7 +58,7 @@ class ChapterContent extends Chapter {
   get $ () {
     if (this._$html == null) {
       if (this._html == null) throw new Error('No html available')
-      this._$html = cheerio.load(this._html)
+      this._$html = cheerio.load(htmlparser2.parseDOM(this._html, options));
       this._$html.find = select => this._$html(select)
       this._html = null
     }
@@ -96,6 +106,5 @@ class ChapterContent extends Chapter {
     this._words = num
   }
 }
-
 
 module.exports = ChapterContent
